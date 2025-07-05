@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        width: 400px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background: rgb(51, 51, 51);
+        padding: 12px;
+        font-size: 20px;
+        font-weight: 900;
+        text-indent: 12px;
+        text-size-adjust: 20px;
+        color: aliceblue;
+    }
+    button{
+        width: 423px;
+        height: 64px;
+        border: none;
+        outline: none;
+        background: rgb(51, 51, 51);
+        padding: 12px;
+        font-size: 20px;
+        font-weight: 900;
+        text-indent: 12px;
+        text-size-adjust: 20px;
+        color: aliceblue;
+        cursor: pointer;
+    }
+    label{
+        color: rgb(51, 51, 51);
+        font-size: 20px;
+    }
+    form div{
+        height: 10px;
+    }
+</style>
+<body>
+    <div class="form" >
+        <form action="" name="myForm" onsubmit="return validateForm()">
+            <label for="username">Username</label><br>
+            <input type="text" name="uname" placeholder="Username"><br>
+            <div style="color: tomato; font-weight: 900; font-size: 20px;" class="user-error" id="uerror"></div><br>
+            <label for="password">Password</label><br>
+            <input type="password" name="pword" placeholder="Password"><br>
+            <div style="color: tomato; font-weight: 900; font-size: 20px;" class="pass-error" id="perror"></div><br>
+            <button>Login</button>
+        </form>
+    </div>
+</body>
+<script>
+    const validateForm = ()=>{
+        let username = document.forms['myForm']['uname'].value;
+        let password = document.forms['myForm']['pword'].value;
+        if(username === ""){
+            document.getElementById("uerror").innerHTML="Please Enter the Username";
+            return false;
+        }else if(password === ""){
+            document.getElementById("perror").innerHTML="Please Enter the Password";
+            return false;            
+        }
+    }
+</script>
+</html>
