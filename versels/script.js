@@ -60,6 +60,7 @@ buttons.forEach(a => a.addEventListener("click",function (e){
    if(text === 'CE'){
      answer.innerHTML = "";
      numberHolder ="";
+     solution = "";
     }else if(text === '%'){
     numberHolder += "/100";
     }else{
@@ -71,6 +72,11 @@ buttons.forEach(a => a.addEventListener("click",function (e){
 
 equal.addEventListener("click", function(){
     try{
+        if(numberHolder.endsWith("=")){
+            numberHolder = numberHolder.slice(0,-1);
+        }
+        solution += numberHolder;
+        answero.innerHTML = solution;
         const result = eval(numberHolder);
         numberHolder = result.toString();
         updateDisplay();
