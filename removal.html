@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Remove items from a dropdown list</title>
+</head>
+<body>        <input type="text" id="item"><br>
+        <button id="clickMe">Add me</button><br><br>
+        <select id="colorSelect">
+            <option>Red</option>
+            <option>Green</option>
+            <option>White</option>
+            <option>Amata</option>
+            <option>Black</option>
+        </select>
+        <input type="button" onclick="removecolor()" value="Select and Remove">
+</body>
+<script>
+    const selects = document.getElementById("colorSelect");
+    function removecolor(){
+        const itsIndex = selects.selectedIndex;
+        selects.remove(itsIndex);
+    }
+    document.getElementById("clickMe").addEventListener("click",function(e){
+        const item = document.getElementById("item").value;
+        const newElement = document.createElement("option");
+        newElement.textContent = item;
+        const handle = selects.appendChild(newElement);
+    })
+</script>
+</html>
