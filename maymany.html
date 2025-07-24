@@ -1,0 +1,75 @@
+<head>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: grab;
+        }
+
+  .drop-zone {
+    width: 300px;
+    height: 150px;
+    background-color: #f1f1f1;
+    border: 3px dashed #ccc;
+    text-align: center;
+    line-height: 150px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex gap-2">
+
+        <div id="draggable" class="box" draggable="true">Drag Me 1</div>
+        <div id="draggable" class="box" draggable="true">Drag Me 2</div>
+        <div id="draggable" class="box" draggable="true">Drag Me 3</div>
+    </div>
+    <div id="dropZone" class="drop-zone"><span>Drop Here</span></div>
+    <br>
+    <table class="" border="2">
+        <tr>
+            <td> 1 </td>
+            <td> 2 </td>
+            <td> 3 </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+        </tr>
+
+    </table>
+</body>
+<script>
+    const draggable = document.querySelectorAll("#draggable");
+    const dropZone = document.getElementById("dropZone");
+    const spanned = document.querySelector("span");
+    draggable.forEach((some)=>{ some.addEventListener("dragstart",function(e){
+        console.log("Drag started");
+        e.dataTransfer.setData("text/plain",e.target.id);
+        e.target.style.opacity = 0.5
+        
+    })
+});
+draggable.forEach(function(some){some.addEventListener("dragend", function(e){
+    // e.dataTransfer.setData("text/plain",e.target.id);
+    dropZone.appendChild(e.target);
+    // dropZone.innerText=e.target;
+    console.log(dropZone)
+    dropZone.style.marginTop="100px";
+    dropZone.style.display="flex";
+    // e.target.style.position= "absolute";
+    e.target.style.opacity = 100;
+    spanned.style.display="none";
+    })});
+</script>
