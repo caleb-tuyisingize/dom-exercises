@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive DOM Box</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: cornflowerblue;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      margin: 50px auto;
+      text-align: center;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box">Click or Hover Me</div>
+  <input type="text" id="nameInput" placeholder="Type something..." />
+
+  <script>
+    const box = document.getElementById("box");
+    const input = document.getElementById("nameInput");
+
+    // Mouse Events
+    box.addEventListener("click", () => {
+      box.textContent = "You clicked me! 🖱️";
+    });
+
+    box.addEventListener("dblclick", () => {
+      box.textContent = "Double click detected! ⚡";
+    });
+
+    box.addEventListener("mouseover", () => {
+      box.style.background = "orange";
+      box.textContent = "Hovering 😎";
+    });
+
+    box.addEventListener("mouseout", () => {
+      box.style.background = "cornflowerblue";
+      box.textContent = "Come back! 👋";
+    });
+
+    // Keyboard Events
+    input.addEventListener("keydown", (e) => {
+      console.log("Key down:", e.key);
+    });
+
+    input.addEventListener("keyup", (e) => {
+      console.log("Key up:", e.key);
+    });
+
+    // Form Events
+    input.addEventListener("input", () => {
+      box.textContent = `You typed: ${input.value}`;
+    });
+
+    input.addEventListener("focus", () => {
+      box.style.border = "4px solid limegreen";
+    });
+
+    input.addEventListener("blur", () => {
+      box.style.border = "none";
+    });
+
+    // Window Events
+    window.addEventListener("resize", () => {
+      console.log("Window resized to", window.innerWidth, "x", window.innerHeight);
+    });
+
+    window.addEventListener("scroll", () => {
+      console.log("You're scrolling...");
+    });
+
+    // Clipboard Events
+    input.addEventListener("copy", () => {
+      alert("You copied something from the input!");
+    });
+
+    input.addEventListener("paste", () => {
+      alert("You pasted something into the input!");
+    });
+  </script>
+
+</body>
+</html>
